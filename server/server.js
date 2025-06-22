@@ -8,12 +8,8 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/client', require('./routes/Client'));
-app.use('/auth', require('./routes/auth'));
 
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
+mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     app.listen(5000, () => console.log('Server started on port 5000'));
   })
